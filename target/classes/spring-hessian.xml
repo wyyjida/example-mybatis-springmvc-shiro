@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:annotation-config />
+    <!-- 组件扫描,使用annotation 自动注册bean,并检查@Required,@Autowired的属性已被注入 -->
+    <context:component-scan base-package="com.mine.service" />
+    <context:component-scan base-package="com.test.service" />
+
+    <!-- 自动装配 -->
+    <bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor" />
+
+
+    <!-- Name保持与web.xml中的一致，web.xml下文中描述 -->
+    <bean id="httpRequestHandlerAdapter" class="org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter"/>
+    <bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping"/>
+
+    <!-- 可以配置多个HessianServiceExporter代理Bean -->
+    <bean name="/testHessianService"
+          class="org.springframework.remoting.caucho.HessianServiceExporter">
+        <property name="service" ref="testHessianService" />
+        <property name="serviceInterface" value="com.test.service.TestHessianService" />
+    </bean>
+
+    <bean name="/userService"
+          class="org.springframework.remoting.caucho.HessianServiceExporter">
+        <property name="service" ref="userService" />
+        <property name="serviceInterface" value="com.mine.service.UserService" />
+    </bean>
+
+</beans>
