@@ -69,4 +69,8 @@ public class UserServiceImpl implements UserService{
     public String toString() {
         return null;
     }
+
+    public String dateToString() {
+        return null;
+    }
 }
