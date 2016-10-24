@@ -65,4 +65,8 @@ public class UserServiceImpl implements UserService{
     public int insertSelective(User record) {
         return 0;
     }
+
+    public String toString() {
+        return null;
+    }
 }
