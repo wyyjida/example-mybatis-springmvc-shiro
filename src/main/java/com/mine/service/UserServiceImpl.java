@@ -48,6 +48,11 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
+    public List<User> getAll() {
+        return null;
+    }
+
+    @Override
     public int deleteByPrimaryKey(Integer id) {
         return 0;
     }

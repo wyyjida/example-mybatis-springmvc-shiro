@@ -2,6 +2,8 @@ package com.mine.service;
 
 import com.mine.entity.User;
 
+import java.util.List;
+
 /**
  * Created by Acting on 2016/10/19.
  */
@@ -21,4 +23,6 @@ public interface UserService {
     User findOneById(Integer id);
 
     User findByUsername(String username);
+
+    List<User> getAll();
 }
